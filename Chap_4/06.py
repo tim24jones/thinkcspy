@@ -1,0 +1,15 @@
+import turtle
+wn=turtle.Screen()
+bob=turtle.Turtle()
+sides=int(input("How many sides in the polygon?"))
+length=int(input("How long will the side of the polygon be?"))
+turt_color=input("What color should the turtle be?")
+bob.color(turt_color)
+fill_color=input("What color will fill in the polygon?")
+bob.fillcolor(fill_color)
+bob.begin_fill()
+for i in range(sides):
+    bob.forward(length)
+    bob.left(360/sides)
+bob.end_fill()
+wn.exitonclick()

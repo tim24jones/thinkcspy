@@ -1,0 +1,25 @@
+import random
+for i in range(10):
+    p=random.random()
+    print(p)
+
+import random
+for i in range(10):
+    p=random.randrange(25,36)
+    print(p)
+
+import math
+a=float(input("first leg"))
+b=float(input("second leg"))
+c=math.hypot(a,b)
+print(c)
+
+import math
+i=10
+p=0
+for n in range (0,i,2):
+    ad=(1/(4*n+1))
+    ab=(1/(4*n+3))
+    p=4*(ad-ab)+p
+print(p)
+print(math.pi)

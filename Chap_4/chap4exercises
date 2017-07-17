@@ -1,0 +1,107 @@
+for i in range(100):
+    print("We like Python's turtles!")
+
+for month in ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]:
+    print("One of the months of the year is", month)
+
+for i in [12,10,32,3,66,17,42,99,20]:
+    print(i, i**2)
+
+import turtle
+wn=turtle.Screen()
+alice=turtle.Turtle()
+
+for i in range (8):
+    alice.forward(50)
+    alice.left(315)
+wn.exitonclick()
+
+import turtle
+wn=turtle.Screen()
+bob=turtle.Turtle()
+sides=int(input("How many sides in the polygon?"))
+length=int(input("How long will the side of the polygon be?"))
+turt_color=input("What color should the turtle be?")
+bob.color(turt_color)
+fill_color=input("What color will fill in the polygon?")
+bob.fillcolor(fill_color)
+bob.begin_fill()
+for i in range(sides):
+    bob.forward(length)
+    bob.left(360/sides)
+bob.end_fill()
+wn.exitonclick()
+
+import turtle
+wn=turtle.Screen()
+bob=turtle.Turtle()
+heading=0
+for angle in [160,-43,270,-97,-43,200,-940,17,-86]:
+    bob.forward(100)
+    bob.left(angle)
+    heading=heading+angle
+print("The current heading is", 360%heading)
+print("The current heading is", bob.heading())
+wn.exitonclick()
+
+import turtle
+wn = turtle.Screen()
+tess = turtle.Turtle()
+tess.speed(10)
+tess.right(90)
+tess.left(3600)
+tess.right(-90)
+tess.left(3600)
+tess.left(3645)
+tess.forward(-100)
+
+import turtle
+wn=turtle.Screen()
+bob=turtle.Turtle()
+bob.left (108)
+for i in range(5):
+    bob.forward(60)
+    bob.left(180-36)
+wn.exitonclick()
+
+import turtle
+wn = turtle.Screen()
+wn.bgcolor("lightgreen")
+tess = turtle.Turtle()
+tess.color("blue")
+tess.shape("turtle")
+tess.speed(10)
+tess.stamp()
+tess.up()
+for i in range(12):
+    tess.forward(70)
+    tess.down()
+    tess.forward(10)
+    tess.up()
+    tess.forward(15)
+    tess.stamp()
+    tess.up()
+    tess.left(180)
+    tess.forward(95)
+    tess.left(360/12)
+wn.exitonclick()
+
+import turtle
+tess = turtle.Turtle()
+print(type(tess))
+
+import turtle
+wn = turtle.Screen()
+tess = turtle.Turtle()
+tess.shape("circle")
+tess.speed(10)
+tess.stamp()
+tess.down()
+legs=int(input("Number of legs="))
+for i in range(legs):
+    tess.forward(100)
+    tess.left(180)
+    tess.forward(100)
+    tess.left(180)
+    tess.left(360/legs)
+wn.exitonclick()

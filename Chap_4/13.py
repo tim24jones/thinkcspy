@@ -1,0 +1,15 @@
+import turtle
+wn = turtle.Screen()
+tess = turtle.Turtle()
+tess.shape("circle")
+tess.speed(10)
+tess.stamp()
+tess.down()
+legs=int(input("Number of legs="))
+for i in range(legs):
+    tess.forward(100)
+    tess.left(180)
+    tess.forward(100)
+    tess.left(180)
+    tess.left(360/legs)
+wn.exitonclick()

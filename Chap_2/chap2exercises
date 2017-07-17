@@ -1,0 +1,63 @@
+str_init_time=input("Enter initial time on clock:")
+init_time=int(str_init_time)
+str_alarm_duration=input("Time until the alarm:")
+alarm_duration=int(str_alarm_duration)
+alarm_time=(init_time+alarm_duration)%24
+print("Time of alarm:",alarm_time)
+
+str_init_date=input("Enter start day:")
+init_date=int(str_init_date)
+str_holiday_duration=input("Enter length of holiday:")
+holiday_duration=int(str_holiday_duration)
+return_date=(init_date+holiday_duration)%7
+print("Number of day returned:",return_date)
+
+str_all="all"
+str_work="work"
+str_and="and"
+str_no="no"
+str_play="play"
+str_makes="makes"
+str_Jack="Jack"
+str_a="a"
+str_dull="dull"
+str_boy="boy"
+str_period="."
+print(str_all,str_work,str_and,str_no,str_play,str_makes,str_Jack,str_a,str_dull,str_boy,str_period)
+
+print(6*1-2)
+print(6*(1-2))
+
+P=10000
+r=0.08
+n=12
+str_t=input("Enter time:")
+t=int(str_t)
+A=P*(1+r/n)**(n*t)
+print("A=",A)
+
+pi=3.14159
+str_radius=input("radius=")
+radius=int(str_radius)
+Area=pi*radius**2
+print("Area=",Area)
+
+str_length=input("Enter length:")
+str_width=input("Enter width:")
+length=int(str_length)
+width=int(str_width)
+Area=length*width
+print("The area of the rectangle is:", Area)
+
+miles=int(input("Miles travelled:"))
+gallons=int(input("Gallons used:"))
+mpg=miles/gallons
+print("The miles gone per gallon is:",mpg)
+
+Celsius=float(input("Degrees celsius"))
+fahrenheit=Celsius*1.8+32
+print(fahrenheit)
+
+fahrenheit=float(input("Degrees celsius"))
+Celsius=(fahrenheit-32)/1.8
+print(Celsius)
