@@ -1,0 +1,21 @@
+a
+If d['bananas'] is meant, then the response is 35
+Otherwise it is a keyerror because banana is in the dictionary, not bananas
+
+b
+4
+
+c
+True
+
+d
+keyerror because pears is not in the dictionary
+
+e
+0 because .get returns zero if key is not found in dictionary
+
+f
+['apples', 'bananas', 'grapes', 'oranges'] because they have been sorted alphabetically
+
+g
+It is false.  Apples is not in d since it was just deleted and dictionaries are mutable.
