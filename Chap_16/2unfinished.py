@@ -6,6 +6,8 @@ class Point:
         return self.x
     def getY(self):
         return self.y
+    def __str__(self):
+        return '('+str(self.x)+','+str(self.y)+')'
     def reflect_x(self):
         return Point(self.x,-1*self.y)
 v=Point(2,3)
