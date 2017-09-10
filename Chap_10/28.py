@@ -43,8 +43,8 @@ def drawLsystem(aTurtle, instructions, angle, distance):
             print(savedInfoList)
         elif cmd == ']':
             newInfo = savedInfoList.pop()
-            print(newInfo)
-            print(savedInfoList)
+            aTurtle.setheading(newInfo[0])
+            aTurtle.setposition(newInfo[1], newInfo[2])
 
 
 def main():
