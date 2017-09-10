@@ -20,8 +20,7 @@ def applyRules(ch):
     newstr = ""
     if ch == 'F':
         newstr = 'F[-F]F[+F]F'   # Rule 1
-    #elif ch== 'X':
-    #    newstr='X[-FFF][+FFF]FX'
+    #elif (put other rules here with more elifs if necessary)
     else:
         newstr = ch    # no rules apply so keep the character
     return newstr
@@ -43,25 +42,24 @@ def drawLsystem(aTurtle, instructions, angle, distance):
             print(savedInfoList)
         elif cmd == ']':
             newInfo = savedInfoList.pop()
-            print(newInfo)
-            print(savedInfoList)
+            aTurtle.setheading(newInfo[0])
+            aTurtle.setposition(newInfo[1], newInfo[2])
+            #print(newInfo)
+            #print(savedInfoList)
 
 
 def main():
-    inst = createLSystem(4, "F")   # create the string
+    inst = createLSystem(3, "F")   # create the string
     print(inst)
     t = turtle.Turtle()            # create the turtle
     wn = turtle.Screen()
 
     t.up()
-    t.back(200)
+    t.back(100)
     t.down()
-    t.speed(9)
+
     drawLsystem(t, inst, 25, 5)   # draw the picture
-                                  # angle 25.7, segment length 5
+                                  # angle 25, segment length 5
     wn.exitonclick()
 
 main()
-
-
-
