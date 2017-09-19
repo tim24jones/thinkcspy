@@ -3,52 +3,91 @@ import sys
 
 sys.setExecutionLimit(200000) #may run long, so be patient
 
-class matrix3_3:
-    def __init__(self,row0,row1,row2):
-        self.r0=row0
-        self.r1=row1
-        self.r2=row2
-        self.c0=row0[0]+row1[0]+row2[0]
-        self.c1=row0[1]+row1[1]+row2[1]
-        self.c2=row0[2]+row1[2]+row2[2]
+class matrix:
+    def __init__(self,element_list):
+        self.matrix=element_list
+        self.rows=len(element_list)
+        self.cols=self.get_cols()
+        self.element_list=element_list
 
     def __str__(self):
-        return([self.r0,self.r1,self.r2])        
+        for n in range(len(self.element_list)):
+            display_str=display_str+self.element_list[n]+'/n'
+        return display_str
 
-    def multiply(self,othermatrix):
+    def get_rows(self):
+        return len(self.element_list)
 
-        output0_0=self.r0*othermatrix.c0
-        output0_1=self.r0*othermatrix.c1
-        output0_2=self.r0*othermatrix.c2
-        output.r0=[output0_0,output0_1,output0_2]
+    def get_cols(self):
+        for n in range(self.rows-1):
+            if len(self.matrix[n])!=len(self.matrix[n+1]):
+                self.cols='Error, mismatched rows'
+        return len(self.matrix[n])
 
-        output1_0=self.r1*othermatrix.c0
-        output1_1=self.r1*othermatrix.c1
-        output1_2=self.r1*othermatrix.c2
-        output.r1=[output1_0,output1_1,output1_2]
-        
-        output2_0=self.r2*othermatrix.c0
-        output2_1=self.r2*othermatrix.c1
-        output2_2=self.r2*othermatrix.c2
-        output.r2=[output2_0,output2_1,output2_2]
-        
-        return matrix3_3(self,output.r0,output.r1,output.r2)
+    def get_row(self,row):
+        return self.element_list[row]
 
-    def sum_elements(self):
+    def get_col(self,col):
+        column=[]
+        for n in range(self.get_rows()):
+            column=column+[self.element_list[n][col]]
+        return column
+
+    def get_element(self,row,col):
+        return self.element_list[row][col]
+
+    def add(self,other_matrix):
+        if self.rows!=other_matrix.rows or self.cols!=other_matrix.cols:
+            return 'Error, dimensions do not match for addition'
+        else:
+            output_matrix=[]
+            for n in range(self.rows):
+                current_row=[]
+                for m in range(self.cols):
+                    current_row=current_row+[int(self.element_list[n][m])+int(other_matrix.element_list[n][m])]
+                output_matrix=output_matrix+current_row
+        return output_matrix
+
+    def subtract(self,other_matrix):
+        if self.rows!=other_matrix.rows or self.cols!=other_matrix.cols:
+            return 'Error, dimensions do not match for subtraction'
+        else:
+            output_matrix=[]
+            for n in range(self.rows):
+                current_row=[]
+                for m in range(self.cols):
+                    current_row=current_row+[int(self.element_list[n][m])-int(other_matrix.element_list[n][m])]
+                output_matrix=output_matrix+current_row
+        return output_matrix
+
+    def multiply(self,other_matrix):
+        output_matrix=[]
+        for i in range(self.rows):
+            for n in range(other_matrix.cols):
+                current_row=[]
+                for n in range(self.cols):
+                    new_element=self.element_list[m][n]*other_matrix.element_list[n][i]
+                    current_row=current_row+new_element
+            output_matrix=output_matrix+current_row
+        return output_matrix
+
+    def sum_of_elements(self):
         sum=0
-        for n in range(2):
-            sum=sum+self.r0[n]
-            sum=sum+self.r1[n]
-            sum=sum+self.r2[n]
+        for m in range(self.rows):
+            for n in range(self.cols):
+                sum=sum+element_list[m][n]
         return sum
 
 def sobol_operator(matrixA):
-    Gx=matrix3_3([1,0,-1],[2,0,-2],[1,0,-1])
-    Gy=matrix3_3([1,2,1],[0,0,0],[-1,-2,-1])
-    xmult=matrixA.multiply(Gx)
-    ymult=matrixA.multiply(Gy)
-    sobol_value=xmult.sum_elements()+ymult.sum_elements()
-    return sobol_value
+    if matrixA.rows!=2 or matrixA.cols!=2:
+        return 'matrix must be 3x3 for sobol operator'
+    else:
+        Gx=matrix([1,0,-1],[2,0,-2],[1,0,-1])
+        Gy=matrix([1,2,1],[0,0,0],[-1,-2,-1])
+        xmult=matrixA.multiply(Gx)
+        ymult=matrixA.multiply(Gy)
+        sobol_value=xmult.sum_of_elements()+ymult.sum_of_elements()
+        return sobol_value
 
 def convolution(filename):
     img=image.Image(filename)
@@ -69,22 +108,14 @@ def convolution(filename):
                         greynearp=greyscale(nearp)
                         greypvalue=greynearp.getRed()
                         pixel_list=pixel_list+[greypvalue]
-                nearmatrix=matrix3_3(pixel_list[0],pixel_list[1],pixel_list[2])
+                nearmatrix=matrix([[pixel_list[0]],[pixel_list[1]],[pixel_list[2]]])
                 outputpixel=sobol_operator(nearmatrix)
-    img.setPixel(col,row,outputpixel)
+                img.setPixel(col,row,outputpixel)
+            else:
+                img.setPixel(col,row,oldpixel)
     img.draw(win)
     win.exitonclick()
 
-#def draw_image(filename):
-#    img=image.Image(filename)
-#    win=image.ImageWin(img.getWidth(),img.getHeight())
-#    img.setDelay(0)
-
-#                img.setPixel(col,row,newpixel)
-#            else:
-#                img.setPixel(col,row,oldpixel)
-#    img.draw(win)
-#    win.exitonclick()
 def greyscale(pixel):
     newvalue=(pixel.getRed()+pixel.getGreen()+pixel.getBlue())//3
     newpixel=image.Pixel(newvalue,newvalue,newvalue)
