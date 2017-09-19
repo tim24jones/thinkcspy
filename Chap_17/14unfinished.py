@@ -13,9 +13,9 @@ class Rectangle:
         self.h=height
         self.place=corner_point
     def getHeight(self):
-        return self.w
-    def getWidth(self):
         return self.h
+    def getWidth(self):
+        return self.w
     def __str__(self):
         return "width=" + str(self.w) + ", height=" + str(self.h)
     def area(self):
@@ -33,30 +33,35 @@ class Rectangle:
         diag=(self.w**2+self.h**2)**0.5
         return(diag)
     def corner_points(self):
-        [corner_point,Point(corner_point.x+self.w,corner_point.y),Point(corner_point.x,corner_point.y+self.h),Point(corner_point.x+width,corner_point.y+height)]
+        corner_point_list=[]
+        corner_point_list=[Point(self.place.x,self.place.y),Point(self.place.x+self.w,self.place.y),Point(self.place.x,self.place.y+self.h),Point(self.place.x+self.w,self.place.y+self.h)]
+        return corner_point_list
     def rect_is_in(self,otherrect):
         #if corner_points(self) are all greater or all less than corner points of other wrt either x or y, then true, otherwise false.
         initialx=0
         initialy=0
-        for n in range(3)
-            if self.corner_points[n].x<otherrect.corner_points[n].x and initialx=(0 or -1)
+        selfcorners=self.corner_points()
+        othercorners=otherrect.corner_points()
+        for n in range(3):
+            if selfcorners[n].x<othercorners[n].x and initialx==(0 or -1):
                 initialx=-1
             else:
                 return "rectangles overlap"
-            if self.corner_points[n].x>otherrect.corner_points[n].x and initialx=(0 or 1):
+            if selfcorners[n].x>othercorners[n].x and initialx==(0 or 1):
                 initialx=1
             else:
                 return "rectangles overlap"
 
-            if self.corner_points[n].y<otherrect.corner_points[n].y and initialy=(0 or -1)
+            if selfcorners[n].y<othercorners[n].y and initialy==(0 or -1):
                 initialy=-1
             else:
                 return "rectangles overlap"
-            if self.corner_points[n].y>otherrect.corner_points[n].y and initialy=(0 or 1):
+            if self.corners[n].y>othercorners[n].y and initialy==(0 or 1):
                 initialy=1
             else:
                 return "rectangles overlap"
         return "rectangles do not overlap"
 
-#r=Rectangle(Point(0,0),10,5)
-#print (r.diagonal())
+r=Rectangle(Point(0,0),1,2)
+q=Rectangle(Point(4,7),3,3)
+print(q.rect_is_in(r))
