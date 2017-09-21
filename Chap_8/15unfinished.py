@@ -71,22 +71,22 @@ class matrix:
             output_matrix=output_matrix+current_row
         return output_matrix
 
-    def sum_of_elements(self):
-        sum=0
+    def avg_of_elements(self):#changed to average
         for m in range(self.rows):
             for n in range(self.cols):
-                sum=sum+element_list[m][n]
+                sum=sum+self.element_list[m][n]
+        sum=sum//9
         return sum
 
 def sobol_operator(matrixA):
     if matrixA.rows!=2 or matrixA.cols!=2:
-        return 'matrix must be 3x3 for sobol operator'
+        return 0
     else:
         Gx=matrix([1,0,-1],[2,0,-2],[1,0,-1])
         Gy=matrix([1,2,1],[0,0,0],[-1,-2,-1])
         xmult=matrixA.multiply(Gx)
         ymult=matrixA.multiply(Gy)
-        sobol_value=xmult.sum_of_elements()+ymult.sum_of_elements()
+        sobol_value=xmult.avg_of_elements()+ymult.avg_of_elements()
         return sobol_value
 
 def convolution(filename):
@@ -109,7 +109,7 @@ def convolution(filename):
                         greypvalue=greynearp.getRed()
                         pixel_list=pixel_list+[greypvalue]
                 nearmatrix=matrix([[pixel_list[0]],[pixel_list[1]],[pixel_list[2]]])
-                outputpixel=sobol_operator(nearmatrix)
+                outputpixel=image.Pixel(sobol_operator(nearmatrix),sobol_operator(nearmatrix),sobol_operator(nearmatrix))
                 img.setPixel(col,row,outputpixel)
             else:
                 img.setPixel(col,row,oldpixel)
