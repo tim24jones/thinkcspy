@@ -1,28 +1,18 @@
-def hanoi(hoops)
-    rod1=[]
-    rod2=[]
-    rod3=[]
-    for i in range(hoops)
-        rod1=[i]+rod1 #set up situation
-    print(rod1)
+def moveTower(height,fromPole, toPole, withPole):
+    listfromPole=range(height)
+    listtoPole=[]
+    listwithPole=[]
+    if height >= 1:
+        #print(listfromPole,listwithPole,listtoPole)
+        moveTower(height-1,fromPole,withPole,toPole)
+        moveDisk(fromPole,toPole,listfromPole,listtoPole)
+        print(listfromPole,listwithPole,listtoPole)
+        moveTower(height-1,withPole,toPole,fromPole)
+        #print(listfromPole,listwithPole,listtoPole)
+        
+def moveDisk(fp,tp,lfp,ltp):
+    print("moving disk from",fp,"to",tp)
+    moving_disk=lfp.pop()
+    ltp.append(moving_disk)
 
-def move(fromrod,torod)
-    if fromrod[-1]<torod[-1]:
-        torod=torod+[fromrod[-1]]
-        fromrod=fromrod[:-1]
-        return(fromrod,torod)#return new arrangements
-    else:
-        return(0)#move invalid
-def trymoves(rod1,rod2,rod3,hoops)
-    if move(rod1,rod2)==0:
-        if move (rod1,rod3)==0:
-            if move rod2,rod3)==0:
-                move (rod3,rod2)
-            else:
-                move (rod2,rod3)
-        else:
-            move (rod1,rod3)
-    else:
-        move (rod1,rod2)
-    
-
+moveTower(3,"A","B","C")
