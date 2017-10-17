@@ -1,0 +1,15 @@
+#solution without code:
+#
+#fill 4 gallon jug with water
+#use it to fill 3 gallon jug with water
+#left with 1 gallon of water in 4 gallon jug
+#transfer 1 gallon of water to 3 gallon jug
+#fill 4 gallon jug with water
+#pour water from 4 gallon jug into 3 gallon jug (which has 2 empty gallons)
+#2 gallons are left in the 4 gallon jug
+
+#instructions:
+#Fill jug 1 with water
+#Transfer water to jug 2
+#Jug 2 has one more gallon in than previously
+
