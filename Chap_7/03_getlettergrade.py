@@ -1,4 +1,4 @@
-def getGrade(grade):
+def getlettergrade(grade):
 	if (grade<60):
         	return 'F'
 	elif (grade>=60 and grade<70):
@@ -11,4 +11,4 @@ def getGrade(grade):
 		return 'A'
 	else:
 		return 'Error'
-getGrade(67)
+getlettergrade(67)
