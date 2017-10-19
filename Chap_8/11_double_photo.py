@@ -1,6 +1,6 @@
 import image
 
-def double_photo(filename):
+def double_photo(filename):#doubles side length of photo, enlarges area by a factor of 4
     img=image.Image(filename)
     newimg=image.EmptyImage(2*img.getWidth(),2*img.getHeight())
     img.setDelay(0)
