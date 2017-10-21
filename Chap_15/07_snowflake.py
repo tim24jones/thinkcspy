@@ -1,4 +1,4 @@
-#copy of Chap 9, exercise 13
+#copy of Chap 9, exercise 13 in data structs book
 import turtle
 
 def createLSystem(numIters,axiom):
