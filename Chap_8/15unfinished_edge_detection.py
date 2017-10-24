@@ -1,7 +1,7 @@
-import image
+import cimage as image
 import sys
 
-sys.setExecutionLimit(200000) #may run long, so be patient
+#sys.setExecutionLimit(200000) may run long, so be patient
 
 class matrix:
     def __init__(self,element_list):
@@ -12,7 +12,7 @@ class matrix:
 
     def __str__(self):
         for n in range(len(self.element_list)):
-            display_str=display_str+self.element_list[n]+'/n'
+            display_str=display_str+str(self.element_list[n])+'\n'
         return display_str
 
     def get_rows(self):
@@ -102,8 +102,8 @@ def convolution(filename):
             nearblue=0
             pixel_list=[]
             if ((col and row)>0) and (col+1<img.getWidth()) and (row+1<img.getHeight()): #working with all but the edges first for simplicity
-                for nearcol in range (col-1,col+2):
-                    for nearrow in range (row-1,row+2):
+                for nearcol in range (col,col+2):
+                    for nearrow in range (row,row+2):
                         nearp=img.getPixel(nearcol,nearrow)
                         greynearp=greyscale(nearp)
                         greypvalue=greynearp.getRed()
